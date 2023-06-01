@@ -1,14 +1,22 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import { useNavigation } from 'expo-router';
 
 export default function TabOneScreen() {
+
+  const navigation = useNavigation();
+
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Image style={styles.logo} source={require('../../assets/images/milka_logo.png')}></Image>
+      <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("two")}>
+        <Text>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate("three")}>
+        <Text>Sign up</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -18,14 +26,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'purple',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  logo: {
+    width: 200, 
+    height: 100,
+    marginBottom: 100,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  botao: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    marginTop: 10,
+    width: 150,
+    borderRadius: 5,
+    
+  }
 });
