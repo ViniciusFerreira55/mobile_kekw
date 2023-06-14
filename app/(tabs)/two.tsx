@@ -36,6 +36,8 @@ export default function TabTwoScreen() {
       const errorMessage = error.message;
       navigation.navigate('three')
     });
+    setLogin('')
+    setSenha('')
   }
 
 

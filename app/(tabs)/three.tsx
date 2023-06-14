@@ -3,11 +3,12 @@ import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { useNavigation } from '@react-navigation/native';
 export default function TabThreeScreen() {
 
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
+    const navigation = useNavigation();
     const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) :void => {
       // No longer need to cast to any - hooray for react!
       // this.setState({temperature: e.target.value});
@@ -33,7 +34,11 @@ createUserWithEmailAndPassword(auth, login, senha)
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
-  });}
+  })
+  setLogin('')
+  setSenha('')
+  navigation.navigate('two')
+  ;}
 
     return (
         <View style={styles.container}>
